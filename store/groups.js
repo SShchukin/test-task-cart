@@ -1,4 +1,6 @@
-import { SET } from './tools/mutation-types'
+'use strict'
+
+import { INIT } from './tools/mutation-types'
 
 export const namespaced = true
 
@@ -11,13 +13,13 @@ export const getters = {
 }
 
 export const actions = {
-  setItems: ({ commit }, data) => {
-    commit(SET, data)
+  initItems: ({ commit }, data) => {
+    commit(INIT, data)
   },
 }
 
 export const mutations = {
-  [SET]: (state, data) => {
+  [INIT]: (state, data) => {
     state.items = data
   },
 }

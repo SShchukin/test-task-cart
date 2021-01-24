@@ -1,12 +1,12 @@
 <template>
-  <div>{{ priceInDollars }}$</div>
+  <div>{{ quantity }} шт.</div>
 </template>
 
 <script>
 export default {
-  name: 'ProductPrice',
+  name: 'ProductQuantity',
   props: {
-    priceInDollars: {
+    quantity: {
       type: Number,
       required: true,
       default: 0,

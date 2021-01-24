@@ -1,0 +1,21 @@
+.expand-enter-active,
+.expand-leave-active {
+  transition: all .3s ease;
+}
+
+.expand-enter,
+.expand-leave-to {
+  opacity: 0;
+  max-height: 0!important;
+}
+
+.hover {
+  transition: all .3s ease;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.6;
+  }
+  &:active {
+    opacity: 0.8;
+  }
+}

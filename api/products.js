@@ -9,13 +9,22 @@ const requestProductsGroups = () => {
   return fetch(`${URLS.BASE_URL}raw/names.json`)
 }
 
+const checkIsValidProduct = (product) => {
+  return (
+    Number(product[PRODUCT.ID]) > 0 &&
+    Number(product[PRODUCT.GROUP_ID]) > 0 &&
+    Number(product[PRODUCT.QUANTITY]) > 0 &&
+    Number(product[PRODUCT.PRICE_IN_DOLLARS]) > 0
+  )
+}
+
 const getFormattedGroupItems = (products) => {
   const formattedData = []
 
   for (const data of products) {
     const [id, content] = data
     const name = content[PRODUCT.NAME]
-    formattedData.push({ id, name })
+    formattedData.push({ id: Number(id), name })
   }
 
   return formattedData
@@ -29,7 +38,7 @@ const getFormattedGroups = (groups) => {
     const [id, content] = entry
     const name = content[GROUP.NAME]
     const items = getFormattedGroupItems(Object.entries(content[GROUP.ITEMS]))
-    formattedData.push({ id, name, items })
+    formattedData.push({ id: Number(id), name, items })
   }
   return formattedData
 }
@@ -45,7 +54,7 @@ export const getGroupsList = async () => {
 }
 
 const getFormattedProducts = (products) => {
-  return products.map((product) => {
+  return products.filter(checkIsValidProduct).map((product) => {
     return {
       id: product[PRODUCT.ID],
       quantity: product[PRODUCT.QUANTITY],

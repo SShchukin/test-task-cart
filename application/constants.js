@@ -19,3 +19,17 @@ export const PRODUCT = Object.freeze({
   GROUP_ID: 'G',
   PRICE_IN_DOLLARS: 'C',
 })
+
+export const CURRENCY = Object.freeze({
+  MIN_VALUE: 20,
+  MAX_VALUE: 80,
+})
+
+export const CART = Object.freeze({
+  MIN_VALUE: 1,
+  VALUE_STEP: 1,
+})
+
+export const DATA_UPDATES = Object.freeze({
+  PERIOD_MS: 15000,
+})
